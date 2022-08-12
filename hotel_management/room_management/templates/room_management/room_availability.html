@@ -1,0 +1,114 @@
+{% extends "user_management/base.html" %}
+
+{% block content %}
+<br>
+<br>
+<br>
+        
+            <div class="container">
+                <h2 class="text-center"><u>Room Available</u></h2><br>			
+                <table class="table table-dark table-striped">
+                    <thead>
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Room Type</th>
+                        <th>Room For</th>
+                        <th>Check-In-Date</th>
+                        <th>Room Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- jinja2 Technique -->
+                    
+                    {% for room_s in room_availability %}
+                        {% if room_s.room_status == 'Available' and room_s.room_type == 'Single' %}
+                            <tr>
+                                <td >{{ room_s.room_number }}</td>
+                                <td>{{ room_s.room_type }}</td>
+                                <td>{{  room_s.room_for }}</td>
+                                <td>{{ room_s.check_in_date }}</td>
+                                <td>{{ room_s.room_status }}</td>
+                            </tr>
+                        {% endif %}    
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>
+               
+   
+
+ 
+        
+        <div class="container">
+            <h2 class="text-center"><u>Room Available</u></h2><br>			
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Room Type</th>
+                    <th>Room For</th>
+                    <th>Check-In-Date</th>
+                    <th>Room Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- jinja2 Technique -->
+                
+                {% for room_d in room_availability %}
+                    {% if room_d.room_status == 'Available' and room_d.room_type == 'Double' %}
+                        <tr>
+                            <td>{{ room_d.room_number }}</td>
+                            <td>{{ room_d.room_type }}</td>
+                            <td>{{  room_d.room_for }}</td>
+                            <td>{{ room_d.check_in_date }}</td>
+                            <td>{{ room_d.room_status }}</td>
+                        </tr>
+                    {% endif %}    
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>    
+
+        
+        <div class="container">
+            <h2 class="text-center"><u>Room Available</u></h2><br>			
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Room Type</th>
+                    <th>Room For</th>
+                    <th>Check-In-Date</th>
+                    <th>Room Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- jinja2 Technique -->
+                
+                {% for room_t in room_availability %}
+                    {% if room_t.room_status == 'Available' and room_t.room_type == 'Triple' %}
+                        <tr>
+                            <td>{{ room_t.room_number }}</td>
+                            <td>{{ room_t.room_type }}</td>
+                            <td>{{  room_t.room_for }}</td>
+                            <td>{{ room_t.check_in_date }}</td>
+                            <td>{{ room_t.room_status }}</td>
+                        </tr>
+                    {% endif %}    
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+       
+        
+
+    
+{% endblock content %}
+
+
+
+
+
