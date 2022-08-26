@@ -2,23 +2,29 @@
 
 {% block content %}
 <br>
-<br>
-<br>
+
     {% for complain in complaints %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ complain.user_complain.profile.image.url }}">
-          <div class="media-body">
+    <div class="card mb-3">
+        <h3 class="card-header"><img class="rounded-circle article-img" src="{{ complain.user_complain.profile.image.url }}">{{ complain.user_complain }}</h3>
+        
+        <div class="card-body">
             <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-complain' complain.user_complain.username %}"><h4>{{ complain.user_complain }}</h4></a>
-              <a class="text-secondary"><h6 class="btn btn-outline-info">Room Number  {{ complain.user_complain.profile.user_room_number }}</h6></a>
-              <small class="text-muted">{{ complain.complain_date|date:"F d, Y" }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'Complaint-detail' complain.id %}"><h6 style="color:red;">Complain Title</h6>{{ complain.complain_title }}</a></h2>
-            <p class="article-content"><h6 style="color:#084f8d;">Complain Description</h6>{{ complain.complain_description }}</p>
-            <img class="rounded mx-auto d-block"  src="{{ complain.image.url }}">
-          </div>
-          
-        </article>
+                <span class="badge rounded-pill bg-dark">Room Number  {{ complain.user_complain.profile.user_room_number }}</span>
+                <span class="badge rounded-pill bg-primary">{{ complain.complain_date|date:"F d, Y" }}</span>
+                <span class="badge rounded-pill bg-primary" ><a href="{% url 'user-complain' complain.user_complain.username %}" style="text-decoration:none ;">Show All Complain</a></span>
+                
+              </div>
+              <span class="badge  bg-info">Title :</span>
+              <h2 class="card-title">{{ complain.complain_title }}</h2>
+        
+        </div>
+        
+          <img class="rounded mx-auto d-block" id="imghome"  src="{{ complain.image.url }}">
+        <div class="card-body">
+          <span class="badge  bg-info">Description :</span>
+          <p class="card-text"> {{ complain.complain_description }}</p>
+        </div>
+    </div>
     {% endfor %}
     {% if is_paginated %}
 

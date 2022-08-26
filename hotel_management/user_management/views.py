@@ -28,6 +28,10 @@ def home(request):
     }
     return render(request, 'user_management/home.html', context)
 
+# Create your views here.
+def pricing(request):
+    return render(request, 'user_management/price.html')    
+
 
     
 #-------- User Registeration Logic --------#

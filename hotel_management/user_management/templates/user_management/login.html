@@ -12,14 +12,15 @@
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Log In</button>
+                <button class="btn btn-outline-info active" type="submit">Log In</button>
     
             </div>
     
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">
-                Need An Account? <a class="'ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            <small class="text-bold">
+                <h4>Need An Account?</h4><button type="button" class="btn btn-outline-info"><a class="'ml-2" href="{% url 'register' %}">Sign Up Now</a></button>
+                
             </small>
 
         </div>

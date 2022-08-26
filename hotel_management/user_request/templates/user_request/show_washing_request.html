@@ -10,27 +10,25 @@
 
         
             <div class="container">
-                <h2 class="text-center"><u>MACHINE-1</u></h2><br>			
+                <h2 class="text-center "><u>MACHINE-1</u></h2><br>			
                
                     
                     {% for laundry in washing_machine %}
                         {% if laundry.machine_number == 'MACHINE-1' %}
-                        <article class="media content-section">
-                            <img class="rounded-circle article-img" src="{{ laundry.user_request.profile.image.url }}">
-                            <div class="media-body">
-                              <div class="article-metadata">
-                                <a class="mr-2"><h4>{{ laundry.user_request }}</h4></a>
-                                <a class="text-secondary"><h6 class="btn btn-outline-info">Room Number  {{  laundry.user_request.profile.user_room_number }}</h6></a>
-                                <small class="text-muted">Put In Time {{ laundry.put_in_time|date:"F d, Y" }}</small>
-                                <small class="text-muted">Take Out Time {{ laundry.take_out_time|date:"F d, Y" }}</small>
-                                <small class="text-muted">{{ laundry.mobile_number }}</small>
-                              </div>
-                              <h2><a class="article-title"><h6 style="color:red;">Status</h6>{{ laundry.status }}</a></h2>
-                              <p class="article-content"><h6 style="color:#084f8d;">Status Type</h6>{{ laundry.status }}</p>
-                              
-                            </div>
-                            
-                          </article>
+                        <div class="card bg-light mb-3 m-auto" style="max-width: 20rem;">
+                          <div class="card-header"><img class="rounded-circle article-img" src="{{ laundry.user_request.profile.image.url }}">{{ laundry.user_request }}
+                          <span class="badge rounded-pill bg-dark">Room Number  {{  laundry.user_request.profile.user_room_number }}</span>
+                          <span class="badge rounded-pill bg-dark">Contact No. {{  laundry.mobile_number }}</span>
+                          </div>
+                          <div class="card-body">
+                            <span class="badge rounded-pill bg-success">Put In Time {{ laundry.put_in_time|date:"F d, Y" }}</span>
+                            <br>
+                            <br>
+                            <span class="badge rounded-pill bg-warning">Take Out Time {{ laundry.take_out_time|date:"F d, Y" }}</span>
+                            <h4 class="card-title"><h6 style="color:red;">Status</h6>{{ laundry.status }}</h4>
+                            <p class="card-text"><h6 style="color:#084f8d;">Status Type</h6>{{ laundry.status }}</p>
+                          </div>
+                        </div>
                         {% endif %}    
                     {% endfor %}
                     
@@ -45,28 +43,23 @@
             <h2 class="text-center"><u>Machine-2</u></h2><br>			
             
                 
-                {% for laundry in washing_machine %}
-                    {% if laundry.machine_number == 'MACHINE-2' %}
-
-                    <article class="media content-section">
-                        <img class="rounded-circle article-img" src="{{ laundry.user_request.profile.image.url }}">
-                        <div class="media-body">
-                          <div class="article-metadata">
-                            <a class="mr-2"><h4>{{ laundry.user_request }}</h4></a>
-                            <a class="text-secondary"><h6 class="btn btn-outline-info">Room Number  {{  laundry.user_request.profile.user_room_number }}</h6></a>
-                            <small class="text-muted">Put In Time {{ laundry.put_in_time|date:"F d, Y" }}</small>
-                            <small class="text-muted">Take Out Time {{ laundry.take_out_time|date:"F d, Y" }}</small>
-                            <small class="text-muted">{{ laundry.mobile_number }}</small>
-                          </div>
-                          <h2><a class="article-title"><h6 style="color:red;">Status</h6>{{ laundry.status }}</a></h2>
-                          <p class="article-content"><h6 style="color:#084f8d;">Status Type</h6>{{ laundry.status }}</p>
-                          
-                        </div>
-                        
-                      </article>
-                    
-                    {% endif %}    
-                {% endfor %}
+            {% for laundry in washing_machine %}
+            {% if laundry.machine_number == 'MACHINE-2' %}
+            <div class="card bg-light mb-3 m-auto" style="max-width: 20rem;">
+              <div class="card-header"><img class="rounded-circle article-img" src="{{ laundry.user_request.profile.image.url }}">{{ laundry.user_request }}
+              <span class="badge rounded-pill bg-dark">Room Number  {{  laundry.user_request.profile.user_room_number }}</span>
+              </div>
+              <div class="card-body">
+                <span class="badge rounded-pill bg-success">Put In Time {{ laundry.put_in_time|date:"F d, Y" }}</span>
+                <br>
+                <br>
+                <span class="badge rounded-pill bg-warning">Take Out Time {{ laundry.take_out_time|date:"F d, Y" }}</span>
+                <h4 class="card-title"><h6 style="color:red;">Status</h6>{{ laundry.status }}</h4>
+                <p class="card-text"><h6 style="color:#084f8d;">Status Type</h6>{{ laundry.status }}</p>
+              </div>
+            </div>
+            {% endif %}    
+        {% endfor %}
 
         </div>    
 

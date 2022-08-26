@@ -82,7 +82,7 @@ def show_food_request(request):
     context = {
         'Food_request': User_Food_Request.objects.all()
     }
-    return render(request, 'user_request/food_request.html', context)  
+    return render(request, 'user_request/food_request_show.html', context)  
 
 
 

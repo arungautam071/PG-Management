@@ -3,22 +3,38 @@
 <br>
 <br>
 <br>
-  <article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ object.user_complain.profile.image.url }}">
-    <div class="media-body">
+<div class="card mb-3">
+  <h3 class="card-header"><img class="rounded-circle article-img" src="{{ object.user_complain.profile.image.url }}">{{ object.user_complain }}</h3>
+  
+  <div class="card-body">
       <div class="article-metadata">
-        <a class="mr-2" href="{% url 'user-complain' object.user_complain.username %}">{{ object.user_complain }}</a>
-        <small class="text-muted">{{ object.complain_date|date:"F d, Y" }}</small>
         {% if object.user_complain == user %}
           <div>
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'Complaint-update' object.id %}">Update</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'Complaint-delete' object.id %}">Delete</a>
+            <span class="badge rounded-pill bg-warning "><a href="{% url 'Complaint-update' object.id %}">Update</a></span>
+            <span class="badge rounded-pill bg-danger"><a href="{% url 'Complaint-delete' object.id %}">Delete</a></span>
           </div>
         {% endif %}
-      </div>
-      <h2 class="article-title"><h6 style="color:red;">Complain Title</h6>{{ object.complain_title }}</h2>
-      <p class="article-content"><h6 style="color:#084f8d;">Complain Description</h6>{{ object.complain_description }}</p>
-      <img class="img-fluid width:48px;height:100px"  src="{{ object.image.url }}">
-    </div>
-  </article>
+        <br>
+          <span class="badge rounded-pill bg-dark">Room Number  {{ object.user_complain.profile.user_room_number }}</span>
+          <span class="badge rounded-pill bg-primary">{{  object.complain_date|date:"F d, Y" }}</span>
+          
+          
+        </div>
+        <span class="badge  bg-info">Title :</span>
+        <h5 class="card-title">{{ object.complain_title }}</h5>
+  
+  </div>
+  
+    <img class="rounded mx-auto d-block" id="imghome"  src="{{ object.image.url }}">
+  <div class="card-body">
+    <span class="badge  bg-info">Description :</span>
+    <p class="card-text"> {{ object.complain_description }}</p>
+  </div>
+</div>
+
+  
 {% endblock content %}
+
+
+
+
