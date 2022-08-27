@@ -1,8 +1,8 @@
 #-------- Django Import--------#
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import DetailView,UpdateView,DeleteView
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 
@@ -11,6 +11,7 @@ from .models import Service_Amenities_Request_Model,User_Food_Request,Washing_ma
 
 #-------- Form Import-------#
 from .forms import Food_Request_Form, Service_Amenities_Request_Form,Washing_machine_request_Form
+from django.views.generic.edit import FormView
 
 
 
@@ -56,7 +57,7 @@ class Washing_machine_Request_View(LoginRequiredMixin,View):
 
  def get(self, request):
   form = Washing_machine_request_Form()
-  return render(request, 'user_request/washing_machine_form.html', {'form':form})   
+  return render(request, 'user_request/washing_form.html', {'form':form})   
 
 
  def post(self, request,*args, **kwargs):
@@ -64,7 +65,7 @@ class Washing_machine_Request_View(LoginRequiredMixin,View):
   form.instance.user_request = request.user
   if form.is_valid():
    form.save()
-   return render(request, 'user_request/washing_machine_form.html', {'form':form})
+   return render(request, 'user_request/washing_form.html', {'form':form})
 
 
 
@@ -93,3 +94,44 @@ def show_washing_request(request):
         'washing_machine': Washing_machine_request.objects.all()
     }
     return render(request, 'user_request/show_washing_request.html', context)  
+
+
+
+class WashingDetailView(DetailView):
+    model = Washing_machine_request      
+    template_name = 'user_request/Washing_machine_request_detail.html'
+
+#--------Washing Delete View --------#
+
+class WashingDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Washing_machine_request
+    success_url = '/user/washing_request_show/'
+    template_name = 'user_request/washing_confirm_delete.html'
+
+    def test_func(self):
+        complaint = self.get_object()
+        if self.request.user == complaint.user_request:
+            return True
+        return False
+
+
+
+#--------Washing Update View --------#
+class WashingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView,FormView):
+    model = Washing_machine_request
+    template_name = 'user_request/washing_form.html'
+    
+    success_url = '/user/washing_request_show/'
+    form_class=Washing_machine_request_Form
+    
+
+    def form_valid(self, form):
+        form.instance.user_request = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        complaint = self.get_object()
+        if self.request.user == complaint.user_request:
+            return True
+        return False
+

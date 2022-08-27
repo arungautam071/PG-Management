@@ -14,6 +14,7 @@ from user_management.views import (
     ComplaintDeleteView,
     UserComplainListView,
 )
+from user_request.views import WashingDetailView,WashingDeleteView,WashingUpdateView
 #--------Lgoin & Logout--------#
 from django.contrib.auth import views as auth_views
 
@@ -23,12 +24,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',user_views.home,name='home-page'),
+    path('',user_views.index,name='index-page'),
+    path('home/',user_views.home,name='home-page'),
     path('price/',user_views.pricing,name='room-price'),
     path('user/<str:username>', UserComplainListView.as_view(), name='user-complain'),
     path('complaint/<int:pk>/', ComplaintDetailView.as_view(), name='Complaint-detail'),
     path('complaint/<int:pk>/update/', ComplaintUpdateView.as_view(), name='Complaint-update'),
     path('complaint/<int:pk>/delete/', ComplaintDeleteView.as_view(), name='Complaint-delete'),
+    path('washing_request_manage/<int:pk>/', WashingDetailView.as_view(), name='washing-detail'),
+    path('washing_request_manage/<int:pk>/update/', WashingUpdateView.as_view(), name='washing-update'),
+    path('washing_request_manage/<int:pk>/delete/', WashingDeleteView.as_view(), name='washing-delete'),
     path('register/',user_views.register,name='register'),
     path('profile/', user_views.profile, name='profile'),
     path('login/',auth_views.LoginView.as_view(template_name='user_management/login.html'),name='Login'),

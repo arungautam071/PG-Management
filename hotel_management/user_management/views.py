@@ -28,9 +28,14 @@ def home(request):
     }
     return render(request, 'user_management/home.html', context)
 
-# Create your views here.
+# pricing page render
 def pricing(request):
     return render(request, 'user_management/price.html')    
+
+# index page render
+
+def index(request):
+    return render(request, 'user_management/index.html')   
 
 
     
