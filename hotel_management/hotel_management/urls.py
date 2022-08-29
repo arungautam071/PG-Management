@@ -39,8 +39,8 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     path('login/',auth_views.LoginView.as_view(template_name='user_management/login.html'),name='Login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='user_management/logout.html'),name='Logout'),
-    path('', include('services_management.urls')),
-    path('user/', include('user_request.urls')),
+    path('service/', include('services_management.urls')),
+    path('user/user_request/', include('user_request.urls')),
     path('user/', include('room_management.urls')),
 
 ]
