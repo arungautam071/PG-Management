@@ -28,6 +28,15 @@ def home(request):
     }
     return render(request, 'user_management/home.html', context)
 
+
+
+class ComplainListView(ListView):
+    model = complaint
+    template_name = 'user_management/home.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'complaints'
+    ordering = ['-complain_date']
+    paginate_by = 5    
+
 # pricing page render
 def pricing(request):
     return render(request, 'user_management/price.html')    
@@ -93,7 +102,7 @@ class UserComplainListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return complaint.objects.filter(user_complain=user).order_by('-complain_date')    
-
+        
 
 class ComplaintDetailView(DetailView):
     model = complaint      

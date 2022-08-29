@@ -13,6 +13,7 @@ from user_management.views import (
     ComplaintUpdateView,
     ComplaintDeleteView,
     UserComplainListView,
+    ComplainListView,
 )
 from user_request.views import WashingDetailView,WashingDeleteView,WashingUpdateView
 #--------Lgoin & Logout--------#
@@ -25,7 +26,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',user_views.index,name='index-page'),
-    path('home/',user_views.home,name='home-page'),
+    path('home/',ComplainListView.as_view(),name='home-page'),
     path('price/',user_views.pricing,name='room-price'),
     path('user/<str:username>', UserComplainListView.as_view(), name='user-complain'),
     path('complaint/<int:pk>/', ComplaintDetailView.as_view(), name='Complaint-detail'),
