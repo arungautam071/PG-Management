@@ -61,7 +61,7 @@ class Washing_machine_Request_View(LoginRequiredMixin,View):
 
 
  def post(self, request,*args, **kwargs):
-  form = Washing_machine_request_Form(request.POST)
+  form = Washing_machine_request_Form(request.POST,)
   form.instance.user_request = request.user
   if form.is_valid():
    form.save()
