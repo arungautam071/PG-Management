@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views import View
-from django.views.generic import DetailView,UpdateView,DeleteView
+from django.views.generic import DetailView,UpdateView,DeleteView,CreateView
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 
@@ -53,19 +53,17 @@ class Service_Amenities_Request(LoginRequiredMixin,View):
 #-------- Washing Machine request View --------#   
 
 class Washing_machine_Request_View(LoginRequiredMixin,View):
+    def get(self, request):
+        form = Washing_machine_request_Form()
+        return render(request, 'user_request/washing_form.html', {'form':form})   
 
 
- def get(self, request):
-  form = Washing_machine_request_Form()
-  return render(request, 'user_request/washing_form.html', {'form':form})   
-
-
- def post(self, request,*args, **kwargs):
-  form = Washing_machine_request_Form(request.POST,)
-  form.instance.user_request = request.user
-  if form.is_valid():
-   form.save()
-   return render(request, 'user_request/washing_form.html', {'form':form})
+    def post(self, request,*args, **kwargs):
+        form = Washing_machine_request_Form(request.POST,)
+        form.instance.user_request = request.user
+        if form.is_valid():
+            form.save()
+        return render(request, 'user_request/washing_form.html', {'form':form})
 
 
 
@@ -134,4 +132,23 @@ class WashingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView,Form
         if self.request.user == complaint.user_request:
             return True
         return False
+
+
+# class WashingRequestCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView,FormView):
+#     model = Washing_machine_request
+#     template_name = 'user_request/washing_form.html'
+    
+#     success_url = '/user/washing_request_show/'
+#     form_class=Washing_machine_request_Form
+    
+
+#     def form_valid(self, form):
+#         form.instance.user_request = self.request.user
+#         return super().form_valid(form)
+
+#     def test_func(self):
+#         complaint = self.get_object()
+#         if self.request.user == complaint.user_request:
+#             return True
+#         return False        
 
