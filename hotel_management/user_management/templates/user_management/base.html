@@ -6,6 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="{% static 'user_management/favicon.ico' %}"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -61,9 +62,14 @@
               <li class="nav-item">
                 <a class="nav-link active" href="{% url 'room-availability' %}">Create Room-Availability</a>
               </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link active" href="">Order Medicine</a>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link active" href="{% url 'room-list' %}">Room-Availability-check</a>
+                <a href="{% url 'request_pharmacy-create' %}" class="badge rounded-pill bg-info">Order Medicine</a>
               </li>
+           
+              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Request</a>
                 <div class="dropdown-menu">
@@ -78,7 +84,7 @@
                   <a class="dropdown-item active" href="{% url 'food_request-show' %}">Food</a>
                   <a class="dropdown-item active" href="{% url 'washing_request_show' %}">Washing Machine</a>
                   <a class="dropdown-item active" href="{% url 'service_request_list' %}">Service Amenities</a>
-                  
+                  <a class="dropdown-item active" href="{% url 'pharamacy_request-list' %}">Pharamacy Request</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="{% url 'Logout' %}">Log-Out</a>
@@ -94,6 +100,15 @@
               <li class="nav-item">
                 <a class="nav-link active" href="{% url 'room-price' %}">Pricing</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'contact-form' %}">Contact Us</a>
+              </li>
+          {% endif %}
+          {% if user.is_superuser %} 
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'room-list' %}">Room-Availability-check</a>
+          </li>
+          
           {% endif %}
         </ul>
            

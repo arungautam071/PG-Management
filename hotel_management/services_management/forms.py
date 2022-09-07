@@ -20,5 +20,9 @@ class complainForm(forms.ModelForm):
         model=complaint
         fields=['complain_type','complain_title','complain_description','complain_date','image']
         labels = {'complain_type':'Complain Type', 'complain_title': 'Title', 'complain_description':'Complain Description', 'complain_date':'Date','image':'Image'}
+        widgets={
+                'image': forms.FileInput(attrs={'class':'form-control', 'type':'file', 'id':'formFile'}),
+                }
+
 
 

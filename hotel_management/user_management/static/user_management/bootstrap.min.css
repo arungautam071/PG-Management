@@ -77,7 +77,7 @@
     --bs-border-radius-xl: 1rem;
     --bs-border-radius-2xl: 2rem;
     --bs-border-radius-pill: 50rem;
-    --bs-link-color: #ffffff;
+    --bs-link-color: #000000;
     --bs-link-hover-color: #3a466a;
     --bs-code-color: #d63384;
     --bs-highlight-bg: #fff3cd
@@ -2312,7 +2312,7 @@ progress {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #7b8ab8;
+    color: #000000;
     background-color: #f0f5fa;
     background-clip: padding-box;
     border: 0 solid #bed1e6;
@@ -5308,8 +5308,8 @@ fieldset:disabled .btn {
 
 .badge {
     --bs-badge-padding-x: 1.25em;
-    --bs-badge-padding-y: 0.75em;
-    --bs-badge-font-size: 0.75em;
+    --bs-badge-padding-y: 0.99em;
+    --bs-badge-font-size: 0.80em;
     --bs-badge-font-weight: 700;
     --bs-badge-color: #fff;
     --bs-badge-border-radius: 0.375rem;
@@ -13386,7 +13386,7 @@ fieldset:disabled .btn {
 
 .badge.bg-light,
 .badge.bg-secondary {
-    color: #7b8ab8
+    color: #000000
 }
 
 .tooltip.show {

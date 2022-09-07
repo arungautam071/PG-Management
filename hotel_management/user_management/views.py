@@ -12,14 +12,18 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+from django.views import View
 
 #-------Model Import--------#
 from services_management.models import complaint
-
+from user_management.models import Profile
+# from user_management.models import Profile
+from room_management.models import User_Room_Management
 #-------Registeration Form import--------#
 from .forms import UserRegisterForm
 from .forms import UserUpdateForm
 from .forms import ProfileUpdateForm
+from .forms import Contact_form
 
 # Create your views here.
 def home(request):
@@ -40,6 +44,10 @@ class ComplainListView(ListView):
 # pricing page render
 def pricing(request):
     return render(request, 'user_management/price.html')    
+
+#contact From render
+# def contact_form(request):
+#     return render(request, 'user_management/contact_form.html')     
 
 # index page render
 
@@ -90,6 +98,39 @@ def profile(request):
     }
 
     return render(request, 'user_management/profile.html', context)
+
+#--------User Profile List View --------#  
+#-------- List view --------
+
+class Profile_ListView(ListView):
+    model = Profile
+    context_object_name = 'user_profile'
+    template_name = 'user_management/profile_list.html'
+
+    def get_queryset(self):
+        return Profile.objects.filter().order_by('-date_of_joining')  
+
+
+#-------- Profile Detail View --------
+        
+
+
+# --------------------experiment  
+def User_Profile_DetailView(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={
+        'room_availability': User_Room_Management.objects.get(id = id),
+        'p_form':ProfileUpdateForm(instance=request.user.profile)
+
+    }
+    return render(request,"user_management/user_profile_detail.html", context)  
+
+# --------------------experiment
+
+# class User_Profile_DetailView(DetailView):
+#     model = User_Room_Management      
+#     template_name = 'user_management/user_profile_detail.html'    
 
 #-------- Complain Class Based View's--------#
 
@@ -142,3 +183,13 @@ class ComplaintUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 
+class Contact_form_detail(View):
+    def get(self, request):
+        form = Contact_form()
+        return render(request, 'user_management/contact_form.html',{'form':form})   
+
+    def post(self, request,*args, **kwargs):
+        form = Contact_form(request.POST)
+        if form.is_valid():
+            form.save()
+        return render(request, 'user_management/contact_form.html',{'form':form})

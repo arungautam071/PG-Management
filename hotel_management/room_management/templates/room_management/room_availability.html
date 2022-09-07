@@ -6,7 +6,7 @@
 <br>
         
             <div class="container">
-                <h2 class="text-center"><u>Room Available</u></h2><br>			
+                <h2 class="text-center"><u>First Floor Room's</u></h2><br>			
                 <table class="table table-primary">
                     <thead>
                     <tr>
@@ -15,19 +15,23 @@
                         <th>Room For</th>
                         <th>Check-In-Date</th>
                         <th>Room Status</th>
+                        <th>User's in Room</th>
+                        <th>Update Entry</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- jinja2 Technique -->
                     
                     {% for room_s in room_availability %}
-                        {% if room_s.room_status == 'Available' and room_s.room_type == 'Single' %}
+                        {% if room_s.room_floor == 'First-floor' %}
                             <tr>
                                 <td >{{ room_s.room_number }}</td>
                                 <td>{{ room_s.room_type }}</td>
                                 <td>{{  room_s.room_for }}</td>
                                 <td>{{ room_s.check_in_date }}</td>
                                 <td>{{ room_s.room_status }}</td>
+                                <td><a href="{% url 'room-detail' room_s.id %}" class="badge rounded-pill bg-info">User's Info</a></td>
+                                <td><a href="{% url 'room-update' room_s.id %}" class="badge rounded-pill bg-warning">Update</a></td>
                             </tr>
                         {% endif %}    
                     {% endfor %}
@@ -41,7 +45,7 @@
  
         
         <div class="container">
-            <h2 class="text-center"><u>Room Available</u></h2><br>			
+            <h2 class="text-center"><u>Second Floor Room's</u></h2><br>			
             <table class="table table-warning">
                 <thead>
                 <tr>
@@ -50,19 +54,23 @@
                     <th>Room For</th>
                     <th>Check-In-Date</th>
                     <th>Room Status</th>
+                    <th>User's in Room</th>
+                    <th>Update Entry</th>
                 </tr>
                 </thead>
                 <tbody>
                 <!-- jinja2 Technique -->
                 
                 {% for room_d in room_availability %}
-                    {% if room_d.room_status == 'Available' and room_d.room_type == 'Double' %}
+                    {% if room_d.room_floor == 'Second-floor' %}
                         <tr>
                             <td>{{ room_d.room_number }}</td>
                             <td>{{ room_d.room_type }}</td>
                             <td>{{  room_d.room_for }}</td>
                             <td>{{ room_d.check_in_date }}</td>
                             <td>{{ room_d.room_status }}</td>
+                            <td><a href="{% url 'room-detail' room_d.id %}" class="badge rounded-pill bg-info">User's Info</a></td>
+                            <td><a href="{% url 'room-update' room_d.id %}" class="badge rounded-pill bg-warning">Update</a></td>
                         </tr>
                     {% endif %}    
                 {% endfor %}
@@ -73,7 +81,7 @@
 
         
         <div class="container">
-            <h2 class="text-center"><u>Room Available</u></h2><br>			
+            <h2 class="text-center"><u>Third Floor Room's</u></h2><br>			
             <table class="table table-light">
                 <thead>
                 <tr>
@@ -82,19 +90,23 @@
                     <th>Room For</th>
                     <th>Check-In-Date</th>
                     <th>Room Status</th>
+                    <th>User's in Room</th>
+                    <th>Update Entry</th>
                 </tr>
                 </thead>
                 <tbody>
                 <!-- jinja2 Technique -->
                 
                 {% for room_t in room_availability %}
-                    {% if room_t.room_status == 'Available' and room_t.room_type == 'Triple' %}
+                    {% if room_t.room_floor == 'Third-floor' %}
                         <tr>
                             <td>{{ room_t.room_number }}</td>
                             <td>{{ room_t.room_type }}</td>
                             <td>{{  room_t.room_for }}</td>
                             <td>{{ room_t.check_in_date }}</td>
                             <td>{{ room_t.room_status }}</td>
+                            <td><a href="{% url 'room-detail' room_t.id %}" class="badge rounded-pill bg-info">User's Info</a></td>
+                            <td><a href="{% url 'room-update' room_t.id %}" class="badge rounded-pill bg-warning">Update</a></td>
                         </tr>
                     {% endif %}    
                 {% endfor %}
@@ -102,6 +114,41 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="container">
+            <h2 class="text-center"><u>Forth Floor Room's</u></h2><br>			
+            <table class="table table-warning">
+                <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Room Type</th>
+                    <th>Room For</th>
+                    <th>Check-In-Date</th>
+                    <th>Room Status</th>
+                    <th>User's in Room</th>
+                    <th>Update Entry</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- jinja2 Technique -->
+                
+                {% for room_d in room_availability %}
+                    {% if room_d.room_floor == 'Forth-floor' %}
+                        <tr>
+                            <td>{{ room_d.room_number }}</td>
+                            <td>{{ room_d.room_type }}</td>
+                            <td>{{  room_d.room_for }}</td>
+                            <td>{{ room_d.check_in_date }}</td>
+                            <td>{{ room_d.room_status }}</td>
+                            <td><a href="{% url 'room-detail' room_d.id %}" class="badge rounded-pill bg-info">User's Info</a></td>
+                            <td><a href="{% url 'room-update' room_d.id %}" class="badge rounded-pill bg-warning">Update</a></td>
+                        </tr>
+                    {% endif %}    
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div> 
        
         
 

@@ -8,12 +8,20 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Create Your Request</legend>
+                <legend class="border-bottom mb-4">medicine request</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info active" type="submit">Submit</button>
+                <button class="btn btn-outline-info active" type="submit">Submt Your Request</button>
+    
             </div>
+    
         </form>
+        
     </div>
-{% endblock content %}
+    <script>
+        $(function () {
+          $("#datepicker").datepicker();
+        });
+      </script>
+{% endblock content %}    

@@ -5,14 +5,14 @@
 <br>
 <br>
     <div class="content-section">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" >
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Create Your Request</legend>
+                <legend class="border-bottom mb-4">Status Update</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info active" type="submit">Submit</button>
+                <button class="btn btn-outline-info" type="submit">update</button>
             </div>
         </form>
     </div>

@@ -134,21 +134,4 @@ class WashingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView,Form
         return False
 
 
-# class WashingRequestCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView,FormView):
-#     model = Washing_machine_request
-#     template_name = 'user_request/washing_form.html'
-    
-#     success_url = '/user/washing_request_show/'
-#     form_class=Washing_machine_request_Form
-    
-
-#     def form_valid(self, form):
-#         form.instance.user_request = self.request.user
-#         return super().form_valid(form)
-
-#     def test_func(self):
-#         complaint = self.get_object()
-#         if self.request.user == complaint.user_request:
-#             return True
-#         return False        
 

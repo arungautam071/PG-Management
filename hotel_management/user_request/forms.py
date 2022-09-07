@@ -1,4 +1,6 @@
 from django import forms
+
+#-------- Model Import --------#
 from .models import User_Food_Request,Service_Amenities_Request_Model,Washing_machine_request
 
 
@@ -28,7 +30,7 @@ class Food_Request_Form(forms.ModelForm):
         fields=['food_type_request','request_date']
         
         
-
+#-------- Service Amenities Form--------#
 
 class Service_Amenities_Request_Form(forms.ModelForm):
     service_type_request = forms.ChoiceField(choices=SERVICE_TYPE, widget=forms.RadioSelect)
@@ -36,6 +38,8 @@ class Service_Amenities_Request_Form(forms.ModelForm):
         model=Service_Amenities_Request_Model
         fields=['service_type_request','service_title']
 
+
+#-------- Washing Machine Form--------#
 
 class Washing_machine_request_Form(forms.ModelForm):
     machine_number = forms.ChoiceField(choices=WASHING_MACHINE_TYPE, widget=forms.RadioSelect)
