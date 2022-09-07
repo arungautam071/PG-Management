@@ -7,7 +7,7 @@ from django.urls import path, include
 
 #--------View import--------#
 
-from user_management.views import Contact_form_detail
+from user_management.views import Contact_form_detail,User_Profile_DetailView
 from user_management import views as user_views
 
 
@@ -31,6 +31,7 @@ urlpatterns = [
     # -------- Profile Management -------- #
 
     path('profile/', user_views.profile, name='profile'),
+    path('user_profile/<id>/', User_Profile_DetailView,name='user-profile-detail'),
     
     
 
