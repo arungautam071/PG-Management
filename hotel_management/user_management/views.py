@@ -1,5 +1,5 @@
 #-------- Django import--------#
-
+from django.urls import  reverse_lazy
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -13,6 +13,11 @@ from django.views.generic import (
     DeleteView
 )
 from django.views import View
+#-------- Staff Decorator Logic --------#
+from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 
 #-------Model Import--------#
 from services_management.models import complaint
@@ -115,7 +120,8 @@ class Profile_ListView(ListView):
         
 
 
-# --------------------experiment  
+# --------------------experiment -------- # 
+@method_decorator(staff_member_required, name='dispatch')
 def User_Profile_DetailView(request, id):
     # dictionary for initial data with
     # field names as keys
@@ -153,7 +159,7 @@ class ComplaintDetailView(DetailView):
 
 class ComplaintDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = complaint
-    success_url = '/'
+    success_url = reverse_lazy("home-page")
     template_name = 'user_management/complaint_confirm_delete.html'
 
     def test_func(self):
@@ -169,7 +175,7 @@ class ComplaintUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = complaint
     template_name = 'user_management/complaint_form.html'
     fields = ['complain_title', 'complain_description','image']
-    success_url = '/'
+    success_url = reverse_lazy("home-page")
 
     def form_valid(self, form):
         form.instance.user_complain = self.request.user
@@ -193,3 +199,21 @@ class Contact_form_detail(View):
         if form.is_valid():
             form.save()
         return render(request, 'user_management/contact_form.html',{'form':form})
+
+
+#-------- Staff Decorator Logic Function --------#
+
+def staff_member_required(view_func=None, redirect_field_name=REDIRECT_FIELD_NAME,
+                          login_url='admin:login'):
+    """
+    Decorator for views that checks that the user is logged in and is a staff
+    member, redirecting to the login page if necessary.
+    """
+    actual_decorator = user_passes_test(
+        lambda u: u.is_active and u.is_staff,
+        login_url=login_url,
+        redirect_field_name=redirect_field_name
+    )
+    if view_func:
+        return actual_decorator(view_func)
+    return actual_decorator

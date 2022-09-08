@@ -4,7 +4,7 @@ from os import stat
 from re import template
 from django.contrib import admin
 from django.urls import path, include
-
+admin.site.site_header="Shiv Shiva Residency "
 #--------View import--------#
 
 from user_management.views import Contact_form_detail,User_Profile_DetailView
@@ -31,6 +31,8 @@ urlpatterns = [
     # -------- Profile Management -------- #
 
     path('profile/', user_views.profile, name='profile'),
+
+    #-------- user profile for pharamacy detail view ------- #
     path('user_profile/<id>/', User_Profile_DetailView,name='user-profile-detail'),
     
     

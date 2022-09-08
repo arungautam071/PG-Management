@@ -10,12 +10,13 @@ from user_management.views import (
     UserComplainListView,
     ComplainListView,
 )
+from django.contrib.auth.decorators import login_required
 
 #-------- URL Pattern--------#
 urlpatterns = [
 
     path('complain_register/',ComplainRegister.as_view(),name='complain-register'),
-    path('home/',ComplainListView.as_view(),name='home-page'),
+    path('home/',login_required(ComplainListView.as_view()),name='home-page'),
     path('user/<str:username>', UserComplainListView.as_view(), name='user-complain'),
     path('complaint/<int:pk>/', ComplaintDetailView.as_view(), name='Complaint-detail'),
     path('complaint/<int:pk>/update/', ComplaintUpdateView.as_view(), name='Complaint-update'),

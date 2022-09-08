@@ -15,7 +15,7 @@ class complaint(models.Model):
     complain_title=models.CharField(max_length=100)
     complain_description=models.TextField()
     complain_date=models.DateTimeField(default=timezone.now)
-    image=models.ImageField(default='default.jpg',upload_to='complain_pic')
+    image=models.ImageField(default='default_food.jpg',upload_to='complain_pic')
     complain_type=models.CharField(max_length=50)
 
     def __str__(self):

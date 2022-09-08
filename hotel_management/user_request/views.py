@@ -13,7 +13,11 @@ from .models import Service_Amenities_Request_Model,User_Food_Request,Washing_ma
 from .forms import Food_Request_Form, Service_Amenities_Request_Form,Washing_machine_request_Form
 from django.views.generic.edit import FormView
 
-
+##-------- Staff Decorator import --------#
+# from django.contrib.auth import REDIRECT_FIELD_NAME
+# from django.contrib.auth.decorators import user_passes_test
+# from django.contrib.admin.views.decorators import staff_member_required
+# from django.utils.decorators import method_decorator
 
 
 # Create your views here.
@@ -70,6 +74,7 @@ class Washing_machine_Request_View(LoginRequiredMixin,View):
  
 
 #-------- Service Amenities View To Show All The Request--------#
+
 def show_request(request):
     context = {
         'service_request': Service_Amenities_Request_Model.objects.all()
@@ -135,3 +140,19 @@ class WashingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView,Form
 
 
 
+#-------- Staff Decorator Logic Function --------#
+
+# def staff_member_required(view_func=None, redirect_field_name=REDIRECT_FIELD_NAME,
+#                           login_url='admin:login'):
+#     """
+#     Decorator for views that checks that the user is logged in and is a staff
+#     member, redirecting to the login page if necessary.
+#     """
+#     actual_decorator = user_passes_test(
+#         lambda u: u.is_active and u.is_staff,
+#         login_url=login_url,
+#         redirect_field_name=redirect_field_name
+#     )
+#     if view_func:
+#         return actual_decorator(view_func)
+#     return actual_decorator

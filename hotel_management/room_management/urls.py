@@ -7,7 +7,7 @@ from .views import Room_Management_View, Room_ManagementListView
 from room_management.views import RoomUpdateView,RoomEntryDeleteView,detail_view,Add_User_Room_Management_View,User_RoomUpdateView,RoomEntryDeleteView
 
 
-#-------- URL Pattern--------#
+#-------- URL Pattern--------#S
 
 urlpatterns = [
     #-------- Room management URL --------#
@@ -18,7 +18,7 @@ urlpatterns = [
     path('add_user/',Add_User_Room_Management_View.as_view(),name='add_user_room'),
     path('user_room_update/<int:pk>/update/', User_RoomUpdateView.as_view(), name='user-room-update'),
     path('entry_delete/<int:pk>/delete/', RoomEntryDeleteView.as_view(), name='entry-delete'),
-    path('<id>/', detail_view,name='room-detail'),
+    path('<id>/detail', detail_view,name='room-detail'),
     
     
 ]

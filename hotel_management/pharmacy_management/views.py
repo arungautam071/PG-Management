@@ -34,6 +34,7 @@ class pharmacy_requestCreateView(LoginRequiredMixin, CreateView):
      
  
 #-------- Detail view --------
+#------- pharmacy prescription show -------
 @staff_member_required
 def detail_view_pharmacy(request, id):
     # dictionary for initial data with
@@ -62,7 +63,7 @@ class pharmacy_requestUpdateView(UpdateView,FormView):
     form_class=pharmacy_status_update_admin_Form
 
 #-------- List view --------
-
+@method_decorator(staff_member_required, name='dispatch')
 class pharamacy_request_ListView(ListView):
     model = pharmacy_model
     context_object_name = 'pharamacy_request'

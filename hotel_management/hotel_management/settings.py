@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'services_management',
     'user_request',
     'room_management',
-    'pharmacy_management'
+    'pharmacy_management',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

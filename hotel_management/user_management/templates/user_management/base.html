@@ -40,7 +40,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'index-page' %}">Shiv Shiva PG</a>
+          <a class="navbar-brand" href="{% url 'index-page' %}">Shiv Shiva Residency </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -59,15 +59,10 @@
               <li class="nav-item">
                 <a class="nav-link active" href="{% url 'complain-register' %}">Register-Complain</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="{% url 'room-availability' %}">Create Room-Availability</a>
-              </li>
               <!-- <li class="nav-item">
                 <a class="nav-link active" href="">Order Medicine</a>
               </li> -->
-              <li class="nav-item">
-                <a href="{% url 'request_pharmacy-create' %}" class="badge rounded-pill bg-info">Order Medicine</a>
-              </li>
+              
            
               
               <li class="nav-item dropdown">
@@ -82,9 +77,12 @@
                 <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Show Request</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item active" href="{% url 'food_request-show' %}">Food</a>
-                  <a class="dropdown-item active" href="{% url 'washing_request_show' %}">Washing Machine</a>
-                  <a class="dropdown-item active" href="{% url 'service_request_list' %}">Service Amenities</a>
+                  <a class="dropdown-item active" href="{% url 'washing_request_show' %}">Washing Machine</a> 
                   <a class="dropdown-item active" href="{% url 'pharamacy_request-list' %}">Pharamacy Request</a>
+                     
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'request_pharmacy-create' %}" class="badge rounded-pill bg-info">Order Medicine</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="{% url 'Logout' %}">Log-Out</a>
@@ -105,8 +103,15 @@
               </li>
           {% endif %}
           {% if user.is_superuser %} 
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'room-list' %}">Room-Availability-check</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle badge rounded-pill bg-success" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin Management</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item active" href="{% url 'room-availability' %}">Create Room-Availability</a>
+              <a class="dropdown-item active" href="{% url 'room-list' %}">Room-Availability-check</a>
+              <a class="dropdown-item active" href="{% url 'service_request_list' %}">Service Amenities</a>
+              <a class="dropdown-item active" href="{% url 'pharamacy_request-list' %}">Pharamacy Request</a>
+
+
           </li>
           
           {% endif %}

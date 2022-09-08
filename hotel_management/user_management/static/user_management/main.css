@@ -17,7 +17,7 @@ body {
   }
   
   .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #ffffff;
 
   }
   
@@ -95,8 +95,8 @@ body {
 
 
 #imghome {
-  max-width: 100%;
-  height: 100%;
+  max-width: 70%;
+  height: 70%;
 }
 
 

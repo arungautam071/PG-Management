@@ -37,7 +37,7 @@ class ProfileUpdateForm(forms.ModelForm):
         ,'office_college_address':'Office Or College Address','emergency_contact_relationship':'Emergency Contact Relationship'
         ,'emergency_contact_mobile_number':'Emergency Contact Number'
         ,'monthly_rent':'Monthly Rent','security_amount':'Security Amount','id_proof_document_name':'ID Proof Document Name','id_proof_document':'ID Proof Document'
-        ,'image':'Image','user_room_number':'User Room Number'}
+        ,'image':'Profile Image','user_room_number':'User Room Number'}
         widgets={
                 'mobile_number': forms.TextInput(attrs={'class':'form-control', 'type':'tel', 'id':'inputDefault','placeholder':'+91**********'}),
                 'emergency_contact_mobile_number': forms.TextInput(attrs={'class':'form-control', 'type':'tel', 'id':'inputDefault','placeholder':'+91**********'}),
