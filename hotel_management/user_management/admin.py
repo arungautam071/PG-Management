@@ -4,9 +4,7 @@ from django.contrib import admin
 from .models import Profile,Contact_Form_Model
 
 # Register your models here.
-@admin.register(Profile)
-class ProfileModelAdmin(admin.ModelAdmin):
-    list_display = ['id','user','mobile_number','date_of_joining','id_proof_document','monthly_rent','security_amount']
+admin.site.register(Profile)
 
 
 @admin.register(Contact_Form_Model)
