@@ -12,18 +12,18 @@ from django.utils import timezone
 #--------User Profile Logic--------#
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    mobile_number=PhoneNumberField(blank=True)
-    date_of_joining=models.DateTimeField(default=timezone.now)
-    residental_address=models.CharField(max_length=150,blank=True)
-    office_college_address=models.CharField(max_length=300,blank=True)
-    emergency_contact_relationship=models.CharField(max_length=30,blank=True)
-    emergency_contact_mobile_number=PhoneNumberField(blank=True)
-    monthly_rent=models.IntegerField(null=True,blank=True)
-    security_amount=models.IntegerField(null=True,blank=True)
-    id_proof_document_name=models.CharField(max_length=30,blank=True)
-    id_proof_document=image=models.ImageField(blank=True,upload_to='documents_pics')
+    # mobile_number=PhoneNumberField(blank=True)
+    # date_of_joining=models.DateTimeField(default=timezone.now)
+    # residental_address=models.CharField(max_length=150,blank=True)
+    # office_college_address=models.CharField(max_length=300,blank=True)
+    # emergency_contact_relationship=models.CharField(max_length=30,blank=True)
+    # emergency_contact_mobile_number=PhoneNumberField(blank=True)
+    # monthly_rent=models.IntegerField(null=True,blank=True)
+    # security_amount=models.IntegerField(null=True,blank=True)
+    # id_proof_document_name=models.CharField(max_length=30,blank=True)
+    # id_proof_document=image=models.ImageField(blank=True,upload_to='documents_pics')
     image=models.ImageField(default='default.jpg', upload_to='profile_pics')
-    user_room_number=models.IntegerField(null=True,blank=True)
+    # user_room_number=models.IntegerField(null=True,blank=True)
     
 
     def __str__(self):
