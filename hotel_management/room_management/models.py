@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 class Room_Management(models.Model):
     room_user_main=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    room_number=models.IntegerField()
+    room_number=models.IntegerField(null=True)
     room_type=models.CharField(max_length=50)
     room_status=models.CharField(max_length=50)
     check_in_date=models.DateField(null=True)
