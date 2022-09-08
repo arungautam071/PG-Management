@@ -23,7 +23,7 @@ class Profile(models.Model):
     id_proof_document_name=models.CharField(max_length=30,blank=True)
     id_proof_document=image=models.ImageField(blank=True,upload_to='documents_pics')
     image=models.ImageField(default='default.jpg', upload_to='profile_pics')
-    user_room_number=models.IntegerField(null=True)
+    user_room_number=models.IntegerField(null=True,blank=True)
     
 
     def __str__(self):
